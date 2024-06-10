@@ -19,8 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const { left, top, width, height } = productImage.getBoundingClientRect();
         const lensSize = 100;
 
-        let x = event.clientX - left - lensSize / 2;
-        let y = event.clientY - top - lensSize / 2;
+        let x, y;
+        if (event.touches) {
+            x = event.touches[0].clientX - left - lensSize / 2;
+            y = event.touches[0].clientY - top - lensSize / 2;
+        } else {
+            x = event.clientX - left - lensSize / 2;
+            y = event.clientY - top - lensSize / 2;
+        }
 
         if (x > width - lensSize) x = width - lensSize;
         if (x < 0) x = 0;
@@ -39,14 +45,27 @@ document.addEventListener('DOMContentLoaded', function () {
         resultImg.style.transform = `translate(-${x * cx}px, -${y * cy}px)`;
     }
 
-    productImage.addEventListener('mousemove', function (event) {
+    function showLens() {
         zoomLens.style.visibility = 'visible';
         zoomResult.style.visibility = 'visible';
+    }
+
+    function hideLens() {
+        zoomLens.style.visibility = 'hidden';
+        zoomResult.style.visibility = 'hidden';
+    }
+
+    productImage.addEventListener('mousemove', function (event) {
+        showLens();
         moveLens(event);
     });
 
-    productImage.addEventListener('mouseleave', function () {
-        zoomLens.style.visibility = 'hidden';
-        zoomResult.style.visibility = 'hidden';
+    productImage.addEventListener('mouseleave', hideLens);
+
+    productImage.addEventListener('touchmove', function (event) {
+        showLens();
+        moveLens(event);
     });
+
+    productImage.addEventListener('touchend', hideLens);
 });

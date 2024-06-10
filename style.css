@@ -52,10 +52,6 @@ main {
     transition: transform 0.3s ease-in-out;
 }
 
-.product-info img:hover {
-    transform: scale(1.1);
-}
-
 .img-container .zoom-lens {
     position: absolute;
     border: 1px solid #000;
