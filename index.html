@@ -4,22 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="style.css">
     <title>Radio Fresh</title>
 </head>
 <body>
-    <i>hola</i><br>
-    <b>hola</b><br>
-    <strong>hola</strong><br>
-    <em>hola</em><br>
-    <mark>hola</mark><br>
-    <small>hola</small><br>
-    <del>hola</del><br>
-    <ins>hola</ins><br>
-    <sub>hola</sub><br>
-    <sup>hola</sup><br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/bZ9v0ZuuZDQ?si=mS1xD4DH3YwDXzUH" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/R6zJit5BJ1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
+    <header>
+        <h1>Radio Handie XYZ</h1>
+        <p>Comunicación sin límites</p>
+    </header>
+
+    <main>
+        <section class="product-info">
+            <img src="handie.jpg" alt="Radio Handie XYZ">
+            <div class="description">
+                <h2>Descubre la Radio Handie XYZ</h2>
+                <p>La Radio Handie XYZ es la solución perfecta para tus necesidades de comunicación en cualquier entorno. Compacta, resistente y con una batería de larga duración.</p>
+                <ul>
+                    <li>Alcance de hasta 10 km</li>
+                    <li>Batería de 24 horas</li>
+                    <li>Resistente al agua y al polvo</li>
+                    <li>16 canales de comunicación</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>¿Interesado? Contáctanos</h2>
+            <form id="contactForm">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Radio Handie XYZ. Todos los derechos reservados.</p>
+    </footer>
 
 <script src="index.js"></script>
 </body>
