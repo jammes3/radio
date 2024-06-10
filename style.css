@@ -44,38 +44,22 @@ main {
     position: relative;
     width: 100%;
     max-width: 300px;
+    margin-bottom: 20px;
 }
 
 .product-info img {
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease-in-out;
-}
-
-.img-container .zoom-lens {
-    position: absolute;
-    border: 1px solid #000;
-    width: 100px;
-    height: 100px;
-    visibility: hidden;
-}
-
-.img-container .zoom-result {
-    border: 1px solid #000;
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    overflow: hidden;
-    visibility: hidden;
 }
 
 .description {
     max-width: 600px;
-    margin-top: 20px;
+    text-align: center;
 }
 
 .description h2 {
     color: #333;
+    margin-bottom: 20px;
 }
 
 .description h3 {
@@ -86,6 +70,8 @@ main {
 .description ul {
     list-style-type: square;
     padding-left: 20px;
+    text-align: left;
+    margin: 0 auto;
 }
 
 footer {
@@ -100,10 +86,15 @@ footer {
 @media (min-width: 768px) {
     .product-info {
         flex-direction: row;
+        align-items: flex-start;
     }
 
     .description {
-        margin-top: 0;
         margin-left: 20px;
+        text-align: left;
+    }
+
+    .description ul {
+        padding-left: 40px;
     }
 }
