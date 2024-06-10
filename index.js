@@ -1,14 +1,52 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    if (name && email && message) {
-        alert('Gracias por tu interés, ' + name + '! Nos pondremos en contacto contigo pronto.');
-        document.getElementById('contactForm').reset();
-    } else {
-        alert('Por favor, completa todos los campos.');
+document.addEventListener('DOMContentLoaded', function () {
+    const productImage = document.getElementById('productImage');
+    const imgContainer = productImage.parentElement;
+
+    const zoomLens = document.createElement('div');
+    zoomLens.setAttribute('class', 'zoom-lens');
+    imgContainer.appendChild(zoomLens);
+
+    const zoomResult = document.createElement('div');
+    zoomResult.setAttribute('class', 'zoom-result');
+    imgContainer.appendChild(zoomResult);
+
+    const resultImg = document.createElement('img');
+    resultImg.setAttribute('src', productImage.src);
+    zoomResult.appendChild(resultImg);
+
+    function moveLens(event) {
+        event.preventDefault();
+        const { left, top, width, height } = productImage.getBoundingClientRect();
+        const lensSize = 100;
+
+        let x = event.clientX - left - lensSize / 2;
+        let y = event.clientY - top - lensSize / 2;
+
+        if (x > width - lensSize) x = width - lensSize;
+        if (x < 0) x = 0;
+        if (y > height - lensSize) y = height - lensSize;
+        if (y < 0) y = 0;
+
+        zoomLens.style.left = x + 'px';
+        zoomLens.style.top = y + 'px';
+
+        const cx = zoomResult.offsetWidth / lensSize;
+        const cy = zoomResult.offsetHeight / lensSize;
+
+        resultImg.style.width = productImage.width * cx + 'px';
+        resultImg.style.height = productImage.height * cy + 'px';
+
+        resultImg.style.transform = `translate(-${x * cx}px, -${y * cy}px)`;
     }
+
+    productImage.addEventListener('mousemove', function (event) {
+        zoomLens.style.visibility = 'visible';
+        zoomResult.style.visibility = 'visible';
+        moveLens(event);
+    });
+
+    productImage.addEventListener('mouseleave', function () {
+        zoomLens.style.visibility = 'hidden';
+        zoomResult.style.visibility = 'hidden';
+    });
 });
